@@ -15,14 +15,17 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.medico.Medico;
 
 @Entity
 @Table(name = "pessoa")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 public class Pessoa{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,4 +44,11 @@ public class Pessoa{
     @CollectionTable(name = "stack", joinColumns = @JoinColumn(name = "pessoa_id"))
     @Column(name = "tecnologia")
 	private List<String> stack;
+	
+	public Pessoa(PessoaDTO dados) {
+		this.apelido = dados.apelido();
+		this.nome = dados.nome();
+		this.nascimento = dados.nascimento();
+		this.stack = dados.stack();
+	}
 }
