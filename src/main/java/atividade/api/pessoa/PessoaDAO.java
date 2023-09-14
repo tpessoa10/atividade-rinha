@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 
 
 @Repository
@@ -23,10 +24,10 @@ public class PessoaDAO {
 		return entityManager.find(Pessoa.class, id);
 		
 	}
-	public List<Pessoa> buscarRegistrosPorNome(String termo) {
-	    String jpql = "select s from stack";
-	    Query query = entityManager.createQuery(jpql, Pessoa.class);
-	    query.setParameter("termo", "%" + termo + "%");
-	    return query.getResultList();
+	@Transactional
+	public List<Pessoa> buscaRegistrosPorTermo(String termo) {
+	    String jpql = "SELECT p FROM Pessoa p JOIN p.stack s WHERE p.nome LIKE :termo OR p.apelido LIKE :termo OR s LIKE :termo";
+	    TypedQuery<Pessoa> queryPessoa = entityManager.createQuery(jpql, Pessoa.class).setParameter("termo", "%" + termo + "%");
+	    return queryPessoa.getResultList();
 	}
 }

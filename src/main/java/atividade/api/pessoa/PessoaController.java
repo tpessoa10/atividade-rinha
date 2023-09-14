@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jakarta.websocket.server.PathParam;
 
 @RestController
@@ -38,7 +40,7 @@ public class PessoaController {
 	}
 	
 	@GetMapping
-	public List<Pessoa> RetornarPorTermo(@PathParam("t") String termo) {
-		return pessoaDAO.buscarRegistrosPorNome(termo);
+	public List<Pessoa> RetornarPorTermo(@RequestParam("t") String termo) {
+		return pessoaDAO.buscaRegistrosPorTermo(termo);
 	}
 }

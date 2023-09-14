@@ -20,8 +20,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import med.voll.api.medico.Medico;
 
-@Entity
 @Table(name = "pessoa")
+@Entity(name = "Pessoa")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
