@@ -30,4 +30,10 @@ public class PessoaDAO {
 	    TypedQuery<Pessoa> queryPessoa = entityManager.createQuery(jpql, Pessoa.class).setParameter("termo", "%" + termo + "%");
 	    return queryPessoa.getResultList();
 	}
+	
+	public Long ContagemDePessoas() {
+		String jpql = "SELECT COUNT(p) FROM Pessoa p";
+		TypedQuery<Long> query = entityManager.createQuery(jpql, Long.class);
+		return query.getSingleResult();
+	}
 }

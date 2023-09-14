@@ -25,9 +25,6 @@ public class PessoaController {
 		this.pessoaDAO = pessoaDAO;
 	}
 	
-	
-	
-	
 	@PostMapping
 	public void salvarPessoa(@RequestBody PessoaDTO dados) {
 		var pessoa = new Pessoa(dados);
@@ -43,4 +40,6 @@ public class PessoaController {
 	public List<Pessoa> RetornarPorTermo(@RequestParam("t") String termo) {
 		return pessoaDAO.buscaRegistrosPorTermo(termo);
 	}
+	
+	
 }
