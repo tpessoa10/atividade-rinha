@@ -18,7 +18,6 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.medico.Medico;
 
 @Table(name = "pessoa")
 @Entity(name = "Pessoa")
