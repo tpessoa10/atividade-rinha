@@ -1,0 +1,8 @@
+services:
+  db:
+    image: railway/mysql:8
+    plan: hobby-dev
+    config:
+      MYSQL_DATABASE: railway
+      MYSQL_USER: ZeGYUMQAjpxRKXTGv3ZI
+      MYSQL_PASSWORD: mypassword
