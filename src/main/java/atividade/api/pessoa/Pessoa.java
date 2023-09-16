@@ -30,7 +30,7 @@ public class Pessoa{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "apelido")
+	@Column(name = "apelido", unique = true)
 	private String apelido;
 	
 	@Column(name = "nome")
